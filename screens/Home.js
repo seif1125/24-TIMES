@@ -23,6 +23,9 @@ const makeClearIconVisible=(visible)=>{
 const ShowModal=()=>{
   setModalShown(true)
 }
+const hideModal=()=>{
+  setModalShown(false)
+}
 const clearSearchInput=()=>{
   setSearchText('')
   makeClearIconVisible(false)
@@ -31,7 +34,7 @@ const clearSearchInput=()=>{
 
 return (      
   <View style={styles.BackgroundView}>  
-    <FilterModal modalShown={modalShown}/>
+    <FilterModal modalShown={modalShown} hideModal={()=>hideModal()}/>
     <View style={styles.menuheader}>
       <Text style={styles.menuheadertext}>News</Text>
       <Icon  onStartShouldSetResponder={()=>ShowModal()} name="filter" style={styles.filtericon}/>
