@@ -1,7 +1,7 @@
 import React,{useState} from 'react';
 import { StyleSheet, View ,Modal} from 'react-native';
 import {  Text, Radio, Button,DatePicker,Icon } from 'native-base';
-
+import CountrySelectDropdown from "react-native-searchable-country-dropdown"
 const  FilterModal= ({modalShown,hideModal}) => {
  const [date, setDate] = useState(new Date())
 let openModal=modalShown;
@@ -10,7 +10,8 @@ return(
              
         <Modal visible={modalShown}>
             <View style={styles.filterheader}>
-             <Text style={styles.filterheadertext}>Filter News</Text>
+             <Text style={styles.filterheadertext}>Filter News</Text>   
+           
              <Icon  onStartShouldSetResponder={()=>hideModal()} name="close" style={styles.filtericon}/>
              </View>
             <View style={styles.typeView}>
@@ -85,14 +86,27 @@ return(
             
            
             disabled={false}
-            />
+            />      
                     </View>  
                     
                  </View>
-                 
+       
             
-            </View>        
-           <Button block style={{margin:'2%',backgroundColor:'red'}} onPress={()=>hideModal()}>
+            </View>     
+            <View >
+                   <View style={styles.optionTitle}>
+                     <Text style={styles.titleText}>
+                         Country
+                     </Text>
+                   </View>
+                   <View style={styles.optionControlRadio}>
+                      <CountrySelectDropdown
+                        countrySelect={(country)=>{console.log(country)}}
+                          textColor={"#000"}  
+                      />
+                  </View>
+            </View>   
+           <Button block style={{ zIndex: -1,margin:'2%',backgroundColor:'red'}} onPress={()=>hideModal()}>
              <Text  >Apply Filter</Text> 
              </Button>    
      
@@ -158,6 +172,7 @@ const styles = StyleSheet.create({
       flexDirection: 'row',
       marginHorizontal: '5%',
       alignItems: 'center',
+      zIndex: 3,
     
   }
 })

@@ -3,7 +3,7 @@ import { StyleSheet, Text, View ,Keyboard} from 'react-native';
 import {Icon,Input } from 'native-base';
 import CategeoryList from "../components/CategeoryList";
 import FilterModal from "../components/FilterModal";
-
+import CountrySelectDropdown from "react-native-searchable-country-dropdown"
 const Home= () => {
 const [modalShown, setModalShown] = useState(false)
 const [resetIconDisplayStyle, setResetIconDisplayStyle] = useState({display:'none'})
@@ -56,7 +56,11 @@ return (
       </View>
     </View>  
       <CategeoryList/>
-     
+        <CountrySelectDropdown
+        countrySelect={"EG"}
+        style={{flexDirection: 'row',flex: 0.5,}}
+        textColor={"#000"}
+    />
   </View> 
  
   );
