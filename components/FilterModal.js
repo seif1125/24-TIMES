@@ -1,114 +1,30 @@
 import React,{useState} from 'react';
-import { StyleSheet, View ,Modal} from 'react-native';
-import {  Text, Radio, Button,DatePicker,Icon } from 'native-base';
+import { StyleSheet, View ,Modal,Platform} from 'react-native';
+import {  Text, Radio, Button,Icon } from 'native-base';
+import NewsTypeFilter from'./NewsTypeFilter';
+import DateTimePicker from '@react-native-community/datetimepicker';
 import CountrySelectDropdown from "react-native-searchable-country-dropdown"
+
+
 const  FilterModal= ({modalShown,hideModal}) => {
- const [date, setDate] = useState(new Date())
+ const [date, setDate] = useState( new Date(Date.now()))
 let openModal=modalShown;
+ 
+  console.log(date)
+
 return( 
+  
      <View style={styles.mainView}>
              
-        <Modal visible={modalShown}>
+        <Modal visible={openModal}>
             <View style={styles.filterheader}>
-             <Text style={styles.filterheadertext}>Filter News</Text>   
-           
-             <Icon  onStartShouldSetResponder={()=>hideModal()} name="close" style={styles.filtericon}/>
-             </View>
-            <View style={styles.typeView}>
-                 <View style={styles.optionTitle}>
-                     <Text style={styles.titleText}>
-                         News
-                     </Text>
-                 </View>
-                 <View style={styles.optionControl}>
-                 <  View style={styles.optionControlRadio}>
-                     <Text >All news</Text>
-                     <Radio
-                       style={{backgroundColor:'#eee',borderRadius: 25,}}
-                        color={"#000000"}
-                        selectedColor={"#f00"}
-                        selected={true}
-                    />
-                    </View>  
-                 <View style={styles.optionControlRadio}>
-                      <Text >Top headlines</Text>
-                         <Radio
-                         style={{backgroundColor:'#eee',borderRadius: 25,}}
-                        color={"#000000"}
-                        selectedColor={"#f00"}
-                        selected={false}
-                     />
-                </View>    
+              <Text style={styles.filterheadertext}>Filter News</Text>   
+              <Icon  onStartShouldSetResponder={()=>hideModal()} name="close" style={styles.filtericon}/>
             </View>
-            </View>
-               <View style={styles.typeView}>
-                 <View style={styles.optionTitle}>
-                     <Text style={styles.titleText}>
-                         Date
-                     </Text>
-                 </View>
-                 <View style={styles.optionControl}>
-                    <View style={styles.optionControlRadio}>
-                     <Text>from</Text>
-                      <DatePicker
-                      
-            defaultDate={date}
-            minimumDate={new Date(2018, 1, 1)}
-            maximumDate={new Date(2018, 12, 31)}
-            locale={"en"}
-            timeZoneOffsetInMinutes={undefined}
-            modalTransparent={true}
-            animationType={"fade"}
-            androidMode={"default"}
-            textStyle={{ color: "red",fontWeight: 'bold', }}
-            placeHolderTextStyle={{ color: "#d3d3d3" }}
-            onDateChange={(newDate)=>{setDate(newDate)}}
-            
-           
-            disabled={false}
-            />
-                    </View>  
-                    <View style={styles.optionControlRadio}>
-                     <Text >to</Text>
-                      <DatePicker
-                      
-            defaultDate={date}
-            minimumDate={new Date(2018, 1, 1)}
-            maximumDate={new Date(2018, 12, 31)}
-            locale={"en"}
-            timeZoneOffsetInMinutes={undefined}
-            modalTransparent={true}
-            animationType={"fade"}
-            androidMode={"default"}
-            textStyle={{ color: "red" ,fontWeight: 'bold',}}
-            placeHolderTextStyle={{ color: "#d3d3d3" }}
-            onDateChange={(newDate)=>{setDate(newDate)}}
-            
-           
-            disabled={false}
-            />      
-                    </View>  
-                    
-                 </View>
-       
-            
-            </View>     
-            <View >
-                   <View style={styles.optionTitle}>
-                     <Text style={styles.titleText}>
-                         Country
-                     </Text>
-                   </View>
-                   <View style={styles.optionControlRadio}>
-                      <CountrySelectDropdown
-                        countrySelect={(country)=>{console.log(country)}}
-                          textColor={"#000"}  
-                      />
-                  </View>
-            </View>   
-           <Button block style={{ zIndex: -1,margin:'2%',backgroundColor:'red'}} onPress={()=>hideModal()}>
-             <Text  >Apply Filter</Text> 
-             </Button>    
+            <NewsTypeFilter/>
+            <Button block style={{ zIndex: -1,margin:'2%',backgroundColor:'red'}} onPress={()=>hideModal()}>
+               <Text  >Apply Filter</Text> 
+            </Button>    
      
   
     
