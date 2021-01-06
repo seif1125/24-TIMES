@@ -1,33 +1,32 @@
-import React,{useState} from 'react';
-import { StyleSheet, View ,Modal,Platform} from 'react-native';
-import {  Text, Radio, Button,Icon } from 'native-base';
+import React from 'react';
+import { StyleSheet, View ,Modal} from 'react-native';
+import {  Text, Button,Icon,Picker } from 'native-base';
 import NewsTypeFilter from'./NewsTypeFilter';
-import DateTimePicker from '@react-native-community/datetimepicker';
-import CountrySelectDropdown from "react-native-searchable-country-dropdown"
-
+import LanguageFilter from"./LanguageFilter"
+//import DateTimePicker from '@react-native-community/datetimepicker';
+//import CountrySelectDropdown from "react-native-searchable-country-dropdown"
+// for later use
 
 const  FilterModal= ({modalShown,hideModal}) => {
- const [date, setDate] = useState( new Date(Date.now()))
+
 let openModal=modalShown;
  
-  console.log(date)
+
 
 return( 
   
-     <View style={styles.mainView}>
-             
+     <View style={styles.mainView}>      
         <Modal visible={openModal}>
             <View style={styles.filterheader}>
               <Text style={styles.filterheadertext}>Filter News</Text>   
               <Icon  onStartShouldSetResponder={()=>hideModal()} name="close" style={styles.filtericon}/>
             </View>
             <NewsTypeFilter/>
+            <LanguageFilter/>
+            
             <Button block style={{ zIndex: -1,margin:'2%',backgroundColor:'red'}} onPress={()=>hideModal()}>
                <Text  >Apply Filter</Text> 
             </Button>    
-     
-  
-    
         </Modal>    
     </View> 
 );
