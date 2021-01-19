@@ -56,12 +56,7 @@ return (
       </View>
     </View>  
       <CategeoryList/>
-        <CountrySelectDropdown
-        countrySelect={"EG"}
-        style={{flexDirection: 'row',flex: 0.5,}}
-        textColor={"#000"}
-    />
-  </View> 
+    </View> 
  
   );
 

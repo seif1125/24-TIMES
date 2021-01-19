@@ -8,19 +8,19 @@ export default function LanguageFilter() {
     ])
     const [selectedLanguage, setSelectedLanguage] = useState('en')
     return (
-       <View style={{flexDirection: 'row',alignItems: 'center',justifyContent: 'flex-start',marginLeft: '5%',paddingVertical:'5.5%',borderBottomWidth:1,borderColor: 'grey',}}>
+       <View style={{flexDirection: 'row',alignItems: 'center',justifyContent: 'flex-start',paddingLeft: '5%',paddingVertical:'5.5%',borderBottomWidth:1,borderColor: 'grey',}}>
                     <Text style={{alignSelf: 'center', fontSize: 20,}}>Language</Text> 
                      <View style={{marginLeft: '15%',width:'45%',}}>
                             <Picker
                         
-                                style={{borderWidth: 1,borderColor:'black',width:'100%',}}
+                                style={{borderWidth: 1,borderColor:'black',width:'130%',}}
                                 mode="dropdown"
                                 selectedValue={selectedLanguage}
                                 onValueChange={(label)=>{setSelectedLanguage(label)}}
                                 iosHeader={"select  language"}
                                 itemTextStyle={{fontWeight: 'bold',}}
-                                iosIcon={<Icon name="arrow-down" />}
-                                textStyle={{ color: "red" ,borderColor:'red',borderBottomWidth: 2,}}
+                                iosIcon={<Icon name="arrow-down" style={{color:"red"}}/>}
+                                textStyle={{ color: "black" ,borderColor:'red',borderBottomWidth: 2,}}
                                 headerStyle={{backgroundColor: 'red',color:'white'}}
                                 headerTitleStyle={{color:'white',width:'120%'}}
                                 headerBackButtonTextStyle={{width:0}}
